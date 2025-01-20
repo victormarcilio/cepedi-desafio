@@ -2,6 +2,7 @@
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
 #include "hardware/clocks.h"
+#include "pico/bootrom.h"
 
 #include "buzzer.h"
 
@@ -52,36 +53,43 @@ int main() {
         comando = getchar();
         printf("Comando recebido: %c\n", comando);
         
-
-        if (comando == 'r') {
+        switch (comando)
+        {
+        case 'r':
             liga_led(13);
             printf("ON: RED\n");
-
-        } else if (comando == 'g') {
+            break;
+        case 'g':
             liga_led(11);
             printf("ON: GREEN\n");
-
-        } else if (comando == 'b') {
+            break;
+        case 'b':
             liga_led(12);
             printf("ON: BLUE\n");
-
-        } else if (comando == 'w') {
+            break;
+        case 'w':
             liga_todos_leds();
             printf("ON: WHITE\n");
-
-        } else if (comando == '0') {
+            break;
+        case '0':
             desliga_todos_leds();
             printf("ON: --\n");
-
-        } else if (comando == 'z') {
+            break;
+        case 'z':
             start_buzzer(buzzer_pin, FREQUENCY); // Liga o buzzer com a frequência definida
             sleep_ms(2000);                      // Mantém por 500ms
             stop_buzzer(buzzer_pin);
             printf("ON: BUZZER\n");
-
-        } else {
+            break;
+        case '1':
+            reset_usb_boot(0, 0);
+            break;
+        
+        default:
             printf("Invalid Input.\n");
+            break;
         }
+
     }
     sleep_ms(100);
 }
