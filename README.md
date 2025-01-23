@@ -1,4 +1,4 @@
- # **Projeto com Raspberry Pi Pico W: Controle de Pinos por Teclado Matricial**
+ # **Projeto com Raspberry Pi Pico W: Controle de Pinos Via Serial**
 
 ## **Descrição do Projeto**
 **Objetivo do projeto:** Como forma de comunicação entre o usuário e o sistema embarcado, deve-se escrever comandos (conjuntos de caracteres) para serem interpretados pelo microcontrolador de modo a realizar o controle dos periféricos trabalhados. 
